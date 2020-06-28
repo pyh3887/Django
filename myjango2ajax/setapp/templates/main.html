@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src='http://code.jquery.com/jquery-latest.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	
+	$('#btn1').click(function(){
+		
+			
+		$.ajax({
+			url: 'list',
+			type: 'get',			
+			success: function(data){
+			
+			
+				
+				var str = '<table border="1">'			
+					str += "<tr><th>고객명</th><th>직원번호(참조번호)</th><th>직원이름</th></tr>"
+				
+					$.each(data,function(ind,entry){						
+						str += "<tr>"
+						str += "<td>" + entry['gogek_name'] + "</td>"						
+						str += "<td>" + entry['jikwon_no'] + "</td>"
+						str += "<td>" + entry['jikwon_name'] + "</td>"						
+						str += "</tr>"						
+					})
+					
+					str += "</table>"
+					
+					$('#display').append(str)
+					
+					
+			},
+			error:function(){
+				$('#display').text('에러')
+			}
+		})
+	
+		
+	})
+	
+	
+})
+</script>
+
+
+</head>
+<body>
+
+<input type="button" id="btn1" value="고객,직원자료보기">
+
+<div id="display"></div>
+
+</body>
+</html>

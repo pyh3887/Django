@@ -1,0 +1,9 @@
+function kbs(){
+	
+	
+	history.back
+	
+	
+	
+	
+}

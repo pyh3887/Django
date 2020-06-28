@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+**직원 ** <p/>
+<table border="1">
+	<tr><th>직원번호</th><th>직원명</th><th>직급</th></tr>
+	{% for m in jikwon %}
+	<tr>
+	<td>{{m.jikwon_no}}</td>
+	<td><a href="/gogek?jikwon_no={{m.jikwon_no}}">{{m.jikwon_name}}</a></td>
+	<td>{{m.jikwon_jik}}</td>		
+	</tr>
+	{% endfor %}
+	
+	
+
+</table>
+
+
+</body>
+</html>

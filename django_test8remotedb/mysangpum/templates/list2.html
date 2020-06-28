@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+* 상품 자료(Django 사용 ) * <br>
+<div style="width: 80%;text-align: right;"></div>
+	<a href="/sangpum/insert">상품 추가</a>
+	
+<table border="1">
+<tr>
+	<th>코드</th><th>상품</th><th>수량</th><th>단가</th><th>기타</th>
+</tr>
+{% if sangpums %}
+{% for f in sangpums %}
+<tr>
+<td>{{f.code}}</td><td>{{f.sang}}</td><td>{{f.su}}</td><td>{{f.dan}}</td>
+<td><a href="/sangpum/update?code={{f.code}}">수정</a>/<a href="/sangpum/delete?code={{f.code}}">삭제</a></td>
+</tr>
+{% endfor %}
+
+{% else %}
+
+<tr><td = colspan="5"> 자료가 없습니다 </td></tr>
+
+<!-- 
+{% endif %}
+<!-- 페이징처리 -->
+<tr>
+<td colspan="5">
+
+{% if sangpums.paginator.num_pages > 1 %}
+	<div>
+	{% if sangpums.has_previous %}
+	 <a href="/sangpum/list?page={{sangpums.previous_page_number}}">&laquo;이전</a>
+	{% endif %}
+	{% if sangpums.has_next %}
+	 <a href="/sangpum/list?page={{sangpums.next_page_number}}">다음&raquo;</a>
+	{% endif %}
+	
+	&nbsp;&nbsp;
+	(페이지: {{sangpums.number}} / {{sangpums.paginator.num_pages}})
+	<hr>
+	{% for p in allpage %}
+		{% if p > 0 %}
+			{% if p == sangpums.number %}
+			[{{p}}]
+			{% elif p != sangpums.number %}
+			<a href='/sangpum/list?page={{p}}'>[{{p}}]</a>	
+			{% endif %}
+		{% endif %}
+	{% endfor %}			
+	</div>
+	{% endif %}
+</td>
+</tr>
+
+</table> 
+
+
+</body>
+</html>

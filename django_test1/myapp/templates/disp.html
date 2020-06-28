@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+<script type="text/javascript">
+window.onload = function(){
+	alert('자바스크립트 실행')
+}
+</script>
+-->
+<link rel="stylesheet" type="text/css" href="/static/css/test.css">
+<script type="text/javascript" src="/static/js/test.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	alert('jQuery 수행')
+	
+	$("#myImg").click(function(){
+		history.back()
+	})
+	
+})
+</script>
+</head>
+<body>
+<span style="font-family: '굴림'">html 관련 자원 처리</span><p/>
+<img alt="" src="/static/image/4.jpg" id ='myImg'>
+</body>
+</html>

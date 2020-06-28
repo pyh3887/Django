@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+상품추가 <br>
+
+
+<form action="insertok" name="frm" method="post"> {% csrf_token %}
+
+<input type="radio" name="checkbtn" value="1" checked>버거
+<input type="radio" name="checkbtn" value="2">음료 <br>
+
+품명 : <input type="text" name = 'name'><br>
+가격 : <input type="text" name="pay"><br>
+재고 : <input type="text" name="stock"><br><br>
+설명 : <textarea rows="" cols="" name="explain"></textarea> <br>
+
+<input type="submit" value= '추가하기'>
+
+</form>
+
+
+
+
+
+
+
+
+</body>
+</html>

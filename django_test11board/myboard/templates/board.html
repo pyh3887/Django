@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body style="margin-left: 20px">
+
+<div style="text-align: center;width: 60%">
+	<h3>** 게시판 목록 **</h3>
+</div>
+<br>
+<a href="/board/insert">글쓰기</a>
+
+<table style="width:90%" class = 'table'>
+<tr>
+<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
+</tr>
+ {% if data %}
+  {% for s in data %}
+  <tr>
+  	<td>{{s.id}} </td>
+  	<td>
+  	{% with ''|center:s.nested as range %}
+  		{% for _ in range %}
+  			&nbsp;&nbsp;
+  		{% endfor %}
+  	<a href="/board/content?id={{s.id}}&page={{data.number}}">{{s.title}}</a>
+  	{% endwith %}
+  	</td>
+  	<td>{{s.name}} </td>
+  	<td>{{s.bdate.year}} </td>
+  	<td>{{s.readcnt}} </td>  	
+  </tr>
+  {% endfor %}
+  
+ {% else %}
+ 
+ <tr>
+ <td colspan="5">게시판 글이 없습니다.
+ </td>
+ </tr>
+ {% endif %}
+ <!-- paging --> 
+ <tr>
+  <td colspan="5" style="text-align: center;">
+  {% if data.has_previous %}
+  
+  <a href="/board/list?page={{data.previous_page_number}}">&laquo;이전</a>
+  {% endif %}
+  {% if data.has_next %}
+  <a href="/board/list?page={{data.next_page_number}}">다음&raquo;</a>
+  {% endif %}
+  &nbsp;&nbsp;{페이지:{{data.number}} / {{data.paginator.num_pages}}}
+ </tr>
+ <tr>
+
+   <td colspan="6" style="text-align: center;">
+
+           <form action="/board/search" method="post">{%csrf_token%}
+
+                     <select name="s_type">
+
+                                <option value="title" selected>글제목</option>
+
+                                <option value="name">작성자</option>
+
+                     </select>
+
+                     <input type="text" name="s_value">
+
+                     <input type="submit" value="검색">
+
+           </form>
+
+   </td>
+
+</tr>
+ 
+ 
+</table>
+
+
+
+
+</body>
+</html>

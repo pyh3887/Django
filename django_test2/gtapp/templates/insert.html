@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+자료 입력 <p/>
+get
+<form action = '/gtapp/insertok' method='get'> 
+이름 : <input type="text" name="name">
+<input type="submit" value="확인">
+</form>
+<br>
+post
+<form action = '/gtapp/insertok' method='post'>{% csrf_token %} <!-- crsf 에서 벗어날수 있음 -->
+이름 : <input type="text" name="name">
+<input type="submit" value="확인">
+</form>
+
+
+</body>
+</html>

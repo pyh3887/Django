@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src='http://code.jquery.com/jquery-latest.js'></script>
+<script type="text/javascript">
+
+
+
+
+	
+	
+	
+	
+	
+
+function func(a){
+	alert(a)
+	aa = $('#su'+a).val()
+	
+
+	
+	$.ajax({
+		url: 'submit',
+		type: 'get',	
+		data : {'su': a ,'gap' : aa},
+		success: function(data){
+		
+			
+			
+			var str = '전체 가격 :' + data.hap + '원'
+	
+				
+			$('#showdata2').append(str)
+				
+		
+				
+		},
+		error:function(){
+			$('#showdata1').text('에러')
+		}
+	})
+	
+	
+}
+
+
+
+
+$(document).ready(function(){
+
+
+	
+	
+	
+	$('#burger').click(function(){
+		
+		
+		$('#showdata1').empty()
+		
+		
+		$.ajax({
+			url: 'burger',
+			type: 'get',			
+			success: function(data){
+			
+			
+				
+				var str = '<table border="1">'
+		
+					str += "<tr><th>id</th><th>분류</th><th>상품명</th><th>가격</th><th>재고량</th><th>설명</th><th>주문하기</th></tr>"
+				
+					$.each(data,function(ind,entry){				
+						
+						str += "<tr>"
+						str += "<td>" + entry['id'] + "</td>"
+						str += "<td>" + entry['val'] + "</td>"
+						str += "<td>" + entry['name'] + "</td>"
+						str += "<td>" + entry['pay'] + "</td>"
+						str += "<td>" + entry['stock'] + "</td>"
+						str += "<td>" + entry['explain'] + "</td>"												
+						str += "<td>주문수량:<input type='text' id = 'su"+entry['id']+"' value='3'><input type='button' value='신청' class='signup' onclick='javascript:func("+ entry['id'] + ")'></td>"
+												
+						str += "</tr>"
+						
+					})
+					
+					str += "</table>"
+					
+					$('#showdata1').append(str)
+					
+			
+					
+			},
+			error:function(){
+				$('#showdata1').text('에러')
+			}
+		})
+	
+		
+	})
+	
+	
+	$('#drink').click(function(){
+		
+		
+		$('#showdata1').empty()
+		
+		
+		$.ajax({
+			url: 'drink',
+			type: 'get',			
+			success: function(data){
+			
+			
+				
+				var str = '<table border="1">'
+		
+					str += "<tr><th>id</th><th>분류</th><th>상품명</th><th>가격</th><th>재고량</th><th>설명</th></tr>"
+				
+					$.each(data,function(ind,entry){						
+						str += "<tr>"
+						str += "<td>" + entry['id'] + "</td>"
+						str += "<td>" + entry['val'] + "</td>"
+						str += "<td>" + entry['name'] + "</td>"
+						str += "<td>" + entry['pay'] + "</td>"
+						str += "<td>" + entry['stock'] + "</td>"
+						str += "<td>" + entry['explain'] + "</td>"
+						str += "</tr>"
+						
+					})
+					
+					str += "</table>"
+					
+					$('#showdata1').append(str)
+					
+			
+					
+			},
+			error:function(){
+				$('#showdata1').text('에러')
+			}
+		})
+	
+		
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+버거천국에 오신걸 환영합니다 <br><br>
+
+메뉴 : <a href="#" id="burger">버거</a> <a href="#" id='drink'>음료</a> 이벤트 <a href="adminpage">관리자</a>
+
+
+
+
+<div id="showdata1"></div>
+
+<div id='showdata2'></div>
+
+<div id='showdata3'></div>
+
+</body>
+</html>

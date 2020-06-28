@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+* 상품 자료(Django 사용) * <br>
+<div style="width: 80%;text-align: right;"></div>
+	<a href="/sangpum/insert">상품 추가</a>
+	
+<table style="width:80%">
+<tr style="background-color: cyan;">
+	<th>코드</th><th>상품</th><th>수량</th><th>단가</th><th>기타</th>
+</tr>
+{% if sangpums %}
+{% for f in sangpums %}
+<tr>
+<td>{{f.code}}</td><td>{{f.sang}}</td><td>{{f.su}}</td><td>{{f.dan}}</td>
+<td><a href="/sangpum/update?code={{s.code}}">수정</a>/<a href="/sangpum/delete?code={{s.code}}">삭제</a></td>
+</tr>
+{% endfor %}
+
+{% else %}
+
+<tr><td = colspan="5"> 자료가 없습니다 </td></tr>
+
+{% endif %}
+</table> 
+
+
+</body>
+</html>

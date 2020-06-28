@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+{% if memid == True  %}
+
+	<p>'{{id}}' 는 이미 사용중인 아이디입니다.</p>
+	<a href="#" onclick="opener.document.regForm.memid.focus(); window.close()">닫기</a>
+
+
+{% else %}
+	
+	<p>'{{id}}' 는 사용 가능한 아이디입니다.</p>
+	<a href="#" onclick="opener.document.regForm.passwd.focus(); window.close()">닫기</a>
+
+
+
+{% endif %}
+
+
+
+
+</body>
+</html>

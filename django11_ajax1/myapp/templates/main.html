@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src='http://code.jquery.com/jquery-latest.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	
+	$('#btn1').click(function(){
+		var msg = $('#txtMsg').val()
+		
+		
+		$('#showData1').empty()
+		
+		$.ajax({
+			url: 'startajax',
+			type: 'get',
+			data : {'msg':msg},
+			success: function(data){
+				//alert(data.key)
+				
+				for(var k in data){
+					var str = k + "<br>" + data[k]
+				}
+				// data['key']
+				$('#showData1').html(str)
+			},
+			error:function(){
+				$('showData1').text('에러')
+			}
+		})
+	
+		
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+메인
+<br>
+ajax 연습 <br>
+
+자료입력 : <input type="text" id="txtMsg" value="홍길동 ">
+<button id="btn1">click1</button>
+<br>
+<div id="showData1">실습1 결과 보기</div>
+</body>
+</html>

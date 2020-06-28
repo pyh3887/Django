@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="insert">상품입력</a>
+
+<table border="1">
+	<tr>
+	<th>코드</th>
+	<th>상품</th>
+	<th>수량</th>
+	<th>단가</th>
+	<th>기타</th>
+	
+	</tr>
+	
+	{% for g in sangdata %}
+	<tr>
+		<td>{{g.code}}</td>
+		<td>{{g.sang}}</td>
+		<td>{{g.su}}</td>
+		<td>{{g.dan}}</td>
+		<td><a href="update?code={{g.0}}">수정</a>/
+		<a href="delete?code={{g.0}}">삭제</a></td>
+	</tr>	
+	{% endfor %}	
+</table>
+
+sangdata의 0번째 리스트의 sang칼럼의 object : {{sangdata.0.sang}}
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+
+
+* 상품 자료 * <br>
+	<table border="1">
+   	{% for a in articles %}
+   	<tr>
+		<td>{{a.irum}}</td>
+		<td>{{a.nai}} </td>
+		<td>{{a.juso}}</td>
+			
+	</tr>		
+	{% endfor %}
+	
+	<tr>
+	<td colspan="3">건수 : {{articles.count}} </td>	
+	</tr>
+	
+	
+	</table>
+
+<input type="button"  value="홈으로" onclick="history.back()">
+
+
+</body>
+</html>

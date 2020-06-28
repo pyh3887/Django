@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2> django 연습문제 </h2>
+
+고객정보 입력
+<form action="company/search" method="post">{% csrf_token %}
+고객명 : <input type="text" name="name"><br>
+고객전화 : <input type="text" name="tel">
+<input type="submit" value="확인">
+<input type="hidden" name="flag" value="n">
+</form>
+
+
+{% if flag == 'y'  %}
+	{% for m in data %}
+	<div>
+	직원명 : {{data.0.0}} <br>
+	직급 : {{m.1}} <br>
+	부서명 : {{m.2}} <br>
+	부서전화 : {{m.3}} <br>
+	
+	이미지 : <img alt="" src="/static/images/{{m.4}}"> <br>
+	근무년수 : {{m.5}} <br>
+	평점 : {{m.6}} <br>
+	
+	
+	</div>
+	{% endfor %}
+{% endif %}
+
+
+
+</body>
+</html>

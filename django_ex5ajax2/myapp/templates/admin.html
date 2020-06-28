@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src='http://code.jquery.com/jquery-latest.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	
+	$('#show').click(function(){
+		
+		
+		
+		
+		
+		$.ajax({
+			url: 'showlist',
+			type: 'get',			
+			success: function(data){
+			
+			
+				
+				var str = '<table border="1">'
+				var count = 0 
+					str += "<tr><th>id</th><th>분류</th><th>상품명</th><th>가격</th><th>재고량</th><th>설명</th></tr>"
+				
+					$.each(data,function(ind,entry){						
+						str += "<tr>"
+						str += "<td>" + entry['id'] + "</td>"
+						str += "<td>" + entry['val'] + "</td>"
+						str += "<td>" + entry['name'] + "</td>"
+						str += "<td>" + entry['pay'] + "</td>"
+						str += "<td>" + entry['stock'] + "</td>"
+						str += "<td>" + entry['explain'] + "</td>"
+						str += "</tr>"
+						count += 1
+					})
+					
+					str += "</table>"
+					
+					$('#display2').append(str)
+					$('#display2').append("건수:" + count)
+			
+					
+			},
+			error:function(){
+				$('#display1').text('에러')
+			}
+		})
+	
+		
+	})
+	
+	
+})
+</script>
+</head>
+
+<body>
+관리자 페이지 <br>
+메뉴 : <a href="#" id="show">상품보기</a>   <a href="insert">상품추가</a>  <a href="main">메인화면</a>
+
+<div id="display2"></div>
+
+
+
+
+</body>
+</html>

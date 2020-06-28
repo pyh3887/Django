@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+**부서 ** <p/>
+<table border="1">
+	<tr><th>부서번호</th><th>부서명</th><th>부서전화</th><th>지역명</th></tr>
+	{% for m in buser %}
+	<tr>
+	<td>{{m.buser_no}}</td>
+	<td><a href="/jikwon?buser_no={{m.buser_no}}">{{m.buser_name}}</a></td>
+	<td>{{m.buser_tel}}</td>
+	<td>{{m.buser_loc}}</td>	
+	</tr>
+	{% endfor %}
+	
+	
+
+</table>
+
+
+</body>
+</html>
